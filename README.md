@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+Country Info App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application allows users to input a country name and retrieve detailed information about the country. The frontend is built using React, and the backend is powered by Node.js with Express, fetching data from the REST Countries API.
 
-## Available Scripts
+Here is some information on the design, tools, libraries, etc. used, and then further down you can find information on how to set up and run this web application.
 
-In the project directory, you can run:
 
-### `npm start`
+Country Info App: In-depth Technology Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Frontend - 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React
+    Description: React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components.
+    Usage in Project: The entire frontend is built using React. Components like InputComponent, CountryInfoComponent, LoadingComponent, and ErrorComponent are all React components.
 
-### `npm test`
+Axios
+    Description: Axios is a promise-based HTTP client for the browser and Node.js. It makes it easy to send asynchronous HTTP requests.
+    Usage in Project: Axios is used to make GET requests from the frontend to the backend server to fetch country information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Create React App (CRA)
+    Description: CRA is a tool that sets up a new React project with a good default configuration. It abstracts away complex configuration and allows developers to focus on writing code.
+    Usage in Project: The frontend project was bootstrapped with CRA, which provided the initial project structure, build scripts, and development server.
 
-### `npm run build`
+Chakra UI
+    Description: Chakra UI is a simple, modular, and accessible component library that provides building blocks to construct your React applications.
+    Usage in Project:
+        ChakraProvider: It's the context provider for Chakra UI. All components should be nested inside it to ensure proper styling and theming.
+        Box, Text, Flex, Heading, Icon: These are basic building blocks provided by Chakra UI. They are used to structure and style the UI.
+        bgGradient, color, p, maxW, etc.: These are Chakra UI's style props, which allow for a more declarative way to apply styles directly to components.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React Spring
+    Description: React Spring is a spring-physics based animation library that covers most UI-related animation needs.
+    Usage in Project:
+        useSpring: This hook is used to create spring animations. In your app, it's used for a fade-in effect.
+        animated: It's a special kind of React component that has a style property that can receive animated values.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React Icons
+    Description: React Icons incorporates popular icons from various libraries into a single, consistent API.
+    Usage in Project:
+        FaGlobeAmericas: This is an icon from the Font Awesome library, representing a globe. It's used in the heading of your app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Node.js
+    Description: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It allows developers to run JavaScript on the server-side.
+    Usage in Project: The backend server runs on Node.js, enabling server-side logic using JavaScript.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Express
+    Description: Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+    Usage in Project: Express is used to create the backend server and define the API endpoint (/api/country/:countryName) that the frontend interacts with.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Axios
+    Description: As mentioned, Axios is a promise-based HTTP client.
+    Usage in Project: On the backend, Axios is used to fetch country data from the REST Countries API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Heroku (for deployment)
+    Description: Heroku is a cloud platform that lets developers build, deliver, monitor, and scale applications. It abstracts away infrastructure management.
+    Usage in Project: The backend can be deployed to Heroku, making it accessible over the internet.
 
-## Learn More
+CORS Middleware
+    Description: CORS (Cross-Origin Resource Sharing) is a security feature implemented by web browsers. The CORS middleware for Express allows you to configure these headers, ensuring that your API can be safely accessed from specific origins.
+    Usage in Project:
+    app.use(cors()): This line adds the CORS middleware to your Express app. This is essential when your frontend and backend are hosted on different domains or ports, especially during local development.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Error Handling
+    Description: Proper error handling ensures that your application can gracefully handle unexpected situations and provide meaningful feedback to the client.
+    Usage in Project:
+    In the /api/country/:countryName route, you've added checks to handle potential issues when fetching data from the REST Countries API. This includes checking if the country data exists and handling different types of errors (like 404 - Not Found or 500 - Internal Server Error).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+How to set up and run this web application:
 
-### Analyzing the Bundle Size
+Prerequisites:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Node.js and npm
+Heroku CLI (for backend deployment)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Setup:
 
-### Advanced Configuration
+Backend Setup - 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Navigate to the backend directory:
+cd path/to/country-info-backend
 
-### Deployment
+Install the required packages:
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Frontend Setup - 
+Navigate to the frontend directory:
+cd path/to/country-info-app
 
-### `npm run build` fails to minify
+Install the required packages:
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Running the Application Locally:
+
+Backend - 
+In the backend directory, start the server:
+node server.js
+
+The server will start on port 3001.
+
+Frontend - 
+In the frontend directory, start the React app:
+npm start
+
+The app will open in your default browser, typically at http://localhost:3000.
+Enter a country name in the input field and click "Search" to retrieve information about the country.
+
