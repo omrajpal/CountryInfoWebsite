@@ -5,9 +5,9 @@ import CountryInfoComponent from './components/CountryInfoComponent';
 import LoadingComponent from './components/LoadingComponent';
 import ErrorComponent from './components/ErrorComponent';
 import { ChakraProvider, Box, Text, Flex, Heading, Icon } from "@chakra-ui/react";
-import theme from './theme'; // Assuming you've created the theme file as mentioned earlier
+import theme from './theme';
 import { useSpring, animated } from '@react-spring/web';
-import { FaGlobeAmericas } from 'react-icons/fa'; // Using react-icons for icons
+import { FaGlobeAmericas } from 'react-icons/fa';
 
 const App = () => {
   const [countryData, setCountryData] = React.useState(null);
@@ -23,7 +23,8 @@ const App = () => {
   const fetchCountryData = async (countryName) => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3001/api/country/${countryName}`);
+      const backendURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001'; // Default to localhost if not set
+      const response = await axios.get(`${backendURL}/api/country/${countryName}`);
       setCountryData(response.data);
       setLoading(false);
     } catch (error) {
